@@ -2,6 +2,7 @@ import Link from "next/link";
 import { NextPage } from "next";
 import { useRouter } from "next/router";
 import { City } from "../../src/components/City";
+import { withClient } from "../../src/graphql/client";
 
 type CityNamePageProps = {
   cities: string[];
@@ -46,4 +47,5 @@ CityNamePage.getInitialProps = async () => {
   };
 };
 
-export default CityNamePage;
+// @ts-expect-error next-apollo types are broken.
+export default withClient({ ssr: true })(CityNamePage);

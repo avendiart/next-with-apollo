@@ -1,8 +1,9 @@
+import { withApollo } from "next-apollo";
 import { ApolloClient, InMemoryCache } from "@apollo/client";
 
-export const getClient = (ssrMode: boolean = false) =>
+export const withClient = withApollo(
   new ApolloClient({
-    ssrMode,
     uri: "https://graphql-weather-api.herokuapp.com/",
     cache: new InMemoryCache(),
-  });
+  })
+);
