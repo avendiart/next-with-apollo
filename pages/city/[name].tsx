@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { GetServerSideProps, NextPage } from "next";
+import { NextPage } from "next";
 import { useRouter } from "next/router";
 import { City } from "../../src/components/City";
 
@@ -40,13 +40,9 @@ const CityNamePage: NextPage<CityNamePageProps> = ({ cities }) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps<CityNamePageProps> = async (
-  context
-) => {
+CityNamePage.getInitialProps = async () => {
   return {
-    props: {
-      cities: ["Berlin", "Moscow"],
-    },
+    cities: ["Berlin", "Moscow"],
   };
 };
 
